@@ -16,7 +16,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 
 
-mongoose.connect(process.env.MONGODB_URI).then(() => {
+// mongoose.connect(process.env.MONGODB_URI).then(() => {
   session = function (session) {
     console.log('session', session);
 
@@ -104,8 +104,6 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
     2: restoreSession('TESTE1')
   };
 
-  // restoreSession('1122');
-
   app.post('/mensagens/enviarMensagem', (req, res) => {
     const instance = req.query.instancia;
     const number = req.body.numero;
@@ -133,5 +131,5 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
       status: true
     })
   });
-});
+// });
 // 
