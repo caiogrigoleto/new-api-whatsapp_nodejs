@@ -126,8 +126,8 @@ app.post('/instancia/iniciar', (req, res) => {
 });
 
 let sessions = {
-  //1: restoreSession('TESTE'),
-  //2: restoreSession('TESTE1')
+   1: restoreSession('TESTE'),
+  // 2: restoreSession('TESTE1')
 };
 
 app.post('/mensagens/enviarMensagem', (req, res) => {
@@ -159,3 +159,10 @@ app.get('/instancia/listar', async (req, res) => {
 });
 // });
 // 
+
+app.post('/instancia/restaurar', (req, res) => {
+  restoreSession('TESTE');
+  res.status(200).json({
+    status: true
+  })
+})
