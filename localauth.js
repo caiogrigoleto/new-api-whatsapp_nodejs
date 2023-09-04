@@ -1,4 +1,4 @@
-const { Client, RemoteAuth, LocalAuth } = require('./index.js');
+const { Client, RemoteAuth, LocalAuth, MessageMedia } = require('./index.js');
 const qrcode = require('qrcode-terminal');
 
 const { MongoStore } = require('wwebjs-mongo');
