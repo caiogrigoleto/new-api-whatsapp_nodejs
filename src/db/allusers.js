@@ -1,8 +1,8 @@
 const connection = require('./connection');
 
-const getAllUsers = async () => {
-  const result = await connection.query('SELECT * FROM usuarios');
+const getAllInstances = async () => {
+  const result = await connection.query('SELECT * FROM instancias_whatsapp');
   return result;
 }
 
-module.exports = getAllUsers;
+module.exports = getAllInstances;
