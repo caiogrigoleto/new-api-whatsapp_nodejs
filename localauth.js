@@ -120,7 +120,7 @@ app.post('/instancia/restaurar', (req, res) => {
 // }
 
 let sessoes = {
-  'GUSTAVO' : session('GUSTAVO'),
+  'GUSTAVO': session('GUSTAVO'),
 };
 
 app.post('/mensagens/enviarMensagem', (req, res) => {
@@ -140,7 +140,7 @@ app.post('/mensagens/enviarMensagem', (req, res) => {
   })
 });
 
-app.post('/mensagens/enviaURLMedia', async (req, res) => {
+app.post('/mensagens/enviarURLMedia', async (req, res) => {
   const instance = req.query.instancia;
   const number = req.body.numero;
   const caption = req.body.nomeArquivo;
@@ -150,16 +150,11 @@ app.post('/mensagens/enviaURLMedia', async (req, res) => {
   const media = await MessageMedia.fromUrl(url);
 
   sessoes[instance].sendMessage(number + '@c.us', media, {
-      caption: caption
+    caption: caption
   }).then(response => {
-      res.status(200).json({
-          status: true,
-          response: response
-      });
-  }).catch(err => {
-      res.status(500).json({
-          status: false,
-          response: err
-      });
-  });
+    res.status(200).json({
+      status: true,
+      data: response
+    });
+  })
 });
