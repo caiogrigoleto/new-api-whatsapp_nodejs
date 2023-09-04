@@ -120,7 +120,7 @@ app.post('/instancia/restaurar', (req, res) => {
 // }
 
 let sessoes = {
-
+  'GUSTAVO' : session('GUSTAVO'),
 };
 
 app.post('/mensagens/enviarMensagem', (req, res) => {
@@ -138,4 +138,27 @@ app.post('/mensagens/enviarMensagem', (req, res) => {
       },
     });
   })
+});
+
+app.post('/mensagens/enviaURLMedia', async (req, res) => {
+  const number = req.body.numero;
+  const caption = req.body.nomeArquivo;
+  const url = req.body.url;
+  //const type = req.body.type;
+
+  const media = await MessageMedia.fromUrl(url);
+
+  sessoes[instance].sendMessage(number + '@c.us', media, {
+      caption: caption
+  }).then(response => {
+      res.status(200).json({
+          status: true,
+          response: response
+      });
+  }).catch(err => {
+      res.status(500).json({
+          status: false,
+          response: err
+      });
+  });
 });
