@@ -141,6 +141,7 @@ app.post('/mensagens/enviarMensagem', (req, res) => {
 });
 
 app.post('/mensagens/enviaURLMedia', async (req, res) => {
+  const instance = req.query.instancia;
   const number = req.body.numero;
   const caption = req.body.nomeArquivo;
   const url = req.body.url;
